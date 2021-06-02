@@ -3,8 +3,6 @@
 const yargs = require('yargs')
 const notes = require('./notes.js')
 
-yargs.version('1.4.0')
-
 yargs.alias('v', 'version')
 yargs.alias('h', 'help')
 
