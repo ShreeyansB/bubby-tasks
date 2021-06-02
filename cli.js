@@ -8,12 +8,6 @@ yargs.version('1.4.0')
 yargs.alias('v', 'version')
 yargs.alias('h', 'help')
 
-
-if(yargs.argv._.length === 0) {
-  console.log('Enter \'bubby-tasks --help\' for more info')
-  process.exit()
-}
-
 // Create add command
 yargs.command({
   command: 'add',
@@ -89,3 +83,7 @@ yargs.command({
 })
 
 yargs.parse()
+
+if(yargs.argv._.length === 0) {
+  console.log('Enter \'bubby-tasks --help\' for more info')
+}
