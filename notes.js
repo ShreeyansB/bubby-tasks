@@ -42,6 +42,7 @@ const removeNote = function (title) {
 }
 
 const listNotes = function () {
+  console.log(chalk.green.bold('Your Notes: \n'))
   const notes = loadNotes()
   if(notes.length === 0) {
     console.log(chalk.yellowBright('[!] No notes found '))
