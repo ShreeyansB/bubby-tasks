@@ -3,7 +3,7 @@ const yargs = require('yargs')
 const { listNotes } = require('./notes.js')
 const notes = require('./notes.js')
 
-yargs.version('1.1.0')
+yargs.version('1.2.0')
 
 // Create add command
 yargs.command({
@@ -29,7 +29,7 @@ yargs.command({
 // Create remove command
 yargs.command({
   command: 'remove',
-  describe: 'Remove a note',
+  describe: 'Remove a note from existing notes',
   builder: {
     title: {
       describe: 'Note title',
@@ -45,7 +45,7 @@ yargs.command({
 // Create list command
 yargs.command({
   command: 'list',
-  describe: 'List the notes',
+  describe: 'List all the notes',
   handler: () => {
     notes.listNotes()
   }
@@ -54,7 +54,7 @@ yargs.command({
 // Create read command
 yargs.command({
   command: 'read',
-  describe: 'Read a note',
+  describe: 'Read a note from existing notes',
   builder: {
     title: {
       describe: 'Note title',

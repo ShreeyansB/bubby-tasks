@@ -1,5 +1,6 @@
 const fs = require('fs')
 const chalk = require('chalk')
+const ellipsis = require('text-ellipsis')
 
 const getNotes = () => {
   return 'Your Notes...'
@@ -22,7 +23,6 @@ const addNote = function (title, body) {
   } else {
     console.log(chalk.bgRed.black.bold('[!] Note title taken '))
   }
-  console.log(notes)
 }
 
 const removeNote = function (title) {
@@ -35,8 +35,6 @@ const removeNote = function (title) {
   } else {
     console.log(chalk.bgRed.black.bold('[!] Note not found '))
   }
-
-  console.log(notesToKeep)
 }
 
 const listNotes = function () {
@@ -46,8 +44,8 @@ const listNotes = function () {
     console.log(chalk.yellowBright('[!] No notes found '))
   } else {
     notes.forEach((note, index) => {
-      console.log(chalk.blue((index + 1) + '. '), chalk.yellow(note.title))
-      console.log('   ', chalk.red(note.body), '\n')
+      console.log(chalk.blue((index + 1) + '. '), chalk.yellow(ellipsis(note.title, 50)))
+      console.log('   ', chalk.red(ellipsis(note.body, 75)), '\n')
     });
   }
 }
