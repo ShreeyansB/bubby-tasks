@@ -1,5 +1,5 @@
-# node-tasks
-A Command Line program to store basic tasks
+# bubby-tasks
+A Command Line program made using NodeJS to store basic tasks
 
 ## Installation
 ```javascript
