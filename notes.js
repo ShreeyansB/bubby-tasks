@@ -63,16 +63,35 @@ const listNotes = function () {
   }
 }
 
-const readNote = function (title) {
-  console.log(chalk.green.bold('\nYour Note: \n'))
-  const notes = loadNotes()
-  const note = notes.find((note) => note.title === title)
+const readNote = {
+  byTitle: function (title) {
+    console.log(chalk.green.bold('\nYour Note: \n'))
+    const notes = loadNotes()
+    const note = notes.find((note) => note.title === title)
 
-  if (note) {
-    console.log(chalk.yellow(note.title))
-    console.log(chalk.red(note.body), '\n')
-  } else {
-    console.log(chalk.yellowBright('[!] No note was found '))
+    if (note) {
+      console.log(chalk.yellow(note.title))
+      console.log(chalk.red(note.body), '\n')
+    } else {
+      console.log(chalk.yellowBright('[!] No note was found '))
+    }
+  },
+  byIndex: function (index) {
+    console.log(chalk.green.bold('\nYour Note: \n'))
+    const notes = loadNotes()
+    const note = notes[index - 1]
+
+    if (notes.length === 0) {
+      console.log(chalk.redBright.bold('\n[!] No notes exist '))
+      return
+    }
+    else if (index < 1 || index > notes.length) {
+      console.log(chalk.yellowBright('[!] Invalid index '))
+      return
+    } else {
+      console.log(chalk.yellow(note.title))
+      console.log(chalk.red(note.body), '\n')
+    }
   }
 }
 

@@ -46,7 +46,7 @@ yargs.command({
     }
   },
   handler: (argv) => {
-    if (!argv.index) {
+    if (argv.index === undefined) {
       notes.removeNote.byTitle(argv.title)
     } else {
       notes.removeNote.byIndex(argv.index)
@@ -71,17 +71,25 @@ yargs.command({
     title: {
       alias: 't',
       describe: 'Note title',
-      demandOption: true,
       type: 'string'
+    },
+    index: {
+      alias: 'i',
+      describe: 'Read by index',
+      type: 'number'
     }
   },
   handler: (argv) => {
-    notes.readNote(argv.title)
+    if (argv.index === undefined) {
+      notes.readNote.byTitle(argv.title)
+    } else {
+      notes.readNote.byIndex(argv.index)
+    }
   }
 })
 
 
-if(process.argv.slice(2).length === 0) {
+if (process.argv.slice(2).length === 0) {
   console.log('Enter \'bubby-tasks --help\' for more info')
 }
 yargs.parse()
