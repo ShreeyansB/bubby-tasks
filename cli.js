@@ -1,15 +1,18 @@
 #!/usr/bin/env node
 
-const chalk = require('chalk')
-const { boolean } = require('yargs')
 const yargs = require('yargs')
-const { listNotes } = require('./notes.js')
 const notes = require('./notes.js')
 
-yargs.version('1.3.0')
+yargs.version('1.4.0')
 
 yargs.alias('v', 'version')
 yargs.alias('h', 'help')
+
+
+if(yargs.argv._.length === 0) {
+  console.log('Enter \'bubby-tasks --help\' for more info')
+  process.exit()
+}
 
 // Create add command
 yargs.command({
