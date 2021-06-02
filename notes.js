@@ -2,10 +2,6 @@ const fs = require('fs')
 const chalk = require('chalk')
 const ellipsis = require('text-ellipsis')
 
-const getNotes = () => {
-  return 'Your Notes...'
-}
-
 // Main functions 
 
 const addNote = function (title, body) {
@@ -98,7 +94,6 @@ const saveNotes = (notes) => {
 }
 
 module.exports = {
-  getNotes: getNotes,
   addNote: addNote,
   removeNote: removeNote,
   listNotes: listNotes,

@@ -80,8 +80,8 @@ yargs.command({
   }
 })
 
-yargs.parse()
 
-if(yargs.argv._.length === 0) {
+if(process.argv.slice(2).length === 0) {
   console.log('Enter \'bubby-tasks --help\' for more info')
 }
+yargs.parse()
