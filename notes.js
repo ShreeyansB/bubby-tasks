@@ -41,6 +41,18 @@ const removeNote = function (title) {
   console.log(notesToKeep)
 }
 
+const listNotes = function () {
+  const notes = loadNotes()
+  if(notes.length === 0) {
+    console.log(chalk.yellowBright('[!] No notes found '))
+  } else {
+    notes.forEach((note, index) => {
+      console.log(chalk.blue((index + 1) + '. '), chalk.yellow(note.title))
+      console.log('   ', chalk.red(note.body), '\n')
+    });
+  }
+}
+
 // Helper Functions
 
 const loadNotes = () => {
@@ -61,5 +73,6 @@ const saveNotes = (notes) => {
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
-  removeNote: removeNote
+  removeNote: removeNote,
+  listNotes: listNotes
 }
