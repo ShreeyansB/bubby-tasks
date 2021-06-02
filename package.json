@@ -1,6 +1,6 @@
 {
   "name": "bubby-tasks",
-  "version": "1.5.0",
+  "version": "1.0.0",
   "description": "A command line task maintainer",
   "main": "app.js",
   "scripts": {
