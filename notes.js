@@ -19,9 +19,9 @@ const addNote = function (title, body) {
     })
 
     saveNotes(notes)
-    console.log(chalk.bgGreenBright.black.bold('[+] Note added '))
+    console.log(chalk.greenBright.bold('\n[+] Note added '))
   } else {
-    console.log(chalk.bgRed.black.bold('[!] Note title taken '))
+    console.log(chalk.redBright.bold('\n[!] Note title taken '))
   }
 }
 
@@ -31,14 +31,14 @@ const removeNote = function (title) {
 
   if (notes.length !== notesToKeep.length) {
     saveNotes(notesToKeep)
-    console.log(chalk.bgGreen.black.bold('[-] Note titled ' + '\'' + title + '\'' + ' deleted '))
+    console.log(chalk.greenBright.bold('\n[-] Note titled ' + '\'' + chalk.blue(title) + '\'' + ' deleted '))
   } else {
-    console.log(chalk.bgRed.black.bold('[!] Note not found '))
+    console.log(chalk.redBright.bold('\n[!] Note not found '))
   }
 }
 
 const listNotes = function () {
-  console.log(chalk.green.bold('Your Notes: \n'))
+  console.log(chalk.green.bold('\nYour Notes: \n'))
   const notes = loadNotes()
   if (notes.length === 0) {
     console.log(chalk.yellowBright('[!] No notes found '))
@@ -51,7 +51,7 @@ const listNotes = function () {
 }
 
 const readNote = function (title) {
-  console.log(chalk.green.bold('Your Note: \n'))
+  console.log(chalk.green.bold('\nYour Note: \n'))
   const notes = loadNotes()
   const note = notes.find((note) => note.title === title)
 
