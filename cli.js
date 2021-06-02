@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const chalk = require('chalk')
 const { boolean } = require('yargs')
 const yargs = require('yargs')
