@@ -9,7 +9,7 @@ npm install -g bubby-tasks
 ## Usage
 
 **Command Line**
-```javascript
+```sh
 bubby-tasks [command]
 
 Commands:
