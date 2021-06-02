@@ -5,6 +5,7 @@ const notes = require('./notes.js')
 
 yargs.alias('v', 'version')
 yargs.alias('h', 'help')
+yargs.scriptName('bubby-tasks')
 
 // Create add command
 yargs.command({
