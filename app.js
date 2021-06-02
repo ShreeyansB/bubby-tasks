@@ -1,9 +1,13 @@
 const chalk = require('chalk')
+const { boolean } = require('yargs')
 const yargs = require('yargs')
 const { listNotes } = require('./notes.js')
 const notes = require('./notes.js')
 
 yargs.version('1.2.0')
+
+yargs.alias('v', 'version')
+yargs.alias('h', 'help')
 
 // Create add command
 yargs.command({
@@ -11,11 +15,13 @@ yargs.command({
   describe: 'Add a new note',
   builder: {
     title: {
+      alias: 't',
       describe: 'Note title',
       demandOption: true,
       type: 'string'
     },
     body: {
+      alias: 'b',
       describe: 'Note body',
       demandOption: true,
       type: 'string'
@@ -32,13 +38,22 @@ yargs.command({
   describe: 'Remove a note from existing notes',
   builder: {
     title: {
+      alias: 't',
       describe: 'Note title',
-      demandOption: true,
       type: 'string'
+    },
+    index: {
+      alias: 'i',
+      describe: 'Remove by index',
+      type: 'number'
     }
   },
   handler: (argv) => {
-    notes.removeNote(argv.title)
+    if (!argv.index) {
+      notes.removeNote.byTitle(argv.title)
+    } else {
+      notes.removeNote.byIndex(argv.index)
+    }
   }
 })
 
@@ -57,6 +72,7 @@ yargs.command({
   describe: 'Read a note from existing notes',
   builder: {
     title: {
+      alias: 't',
       describe: 'Note title',
       demandOption: true,
       type: 'string'

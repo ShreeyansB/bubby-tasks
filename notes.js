@@ -25,15 +25,32 @@ const addNote = function (title, body) {
   }
 }
 
-const removeNote = function (title) {
-  const notes = loadNotes()
-  const notesToKeep = notes.filter((note) => note.title !== title)
+const removeNote = {
+  byTitle: function (title) {
+    const notes = loadNotes()
+    const notesToKeep = notes.filter((note) => note.title !== title)
 
-  if (notes.length !== notesToKeep.length) {
-    saveNotes(notesToKeep)
-    console.log(chalk.greenBright.bold('\n[-] Note titled ' + '\'' + chalk.blue(title) + '\'' + ' deleted '))
-  } else {
-    console.log(chalk.redBright.bold('\n[!] Note not found '))
+    if (notes.length !== notesToKeep.length) {
+      saveNotes(notesToKeep)
+      console.log(chalk.greenBright.bold('\n[-] Note titled ' + '\'' + chalk.blue(title) + '\'' + ' deleted '))
+    } else {
+      console.log(chalk.redBright.bold('\n[!] Note not found '))
+    }
+  },
+  byIndex: function (index) {
+    const notes = loadNotes()
+    if (notes.length === 0) {
+      console.log(chalk.redBright.bold('\n[!] No notes exist '))
+      return
+    } else if (index < 1 || index > notes.length) {
+      console.log(chalk.yellowBright('[!] Invalid index '))
+      return
+    } else {
+      const deletedNote = notes.splice(index - 1, 1)
+      console.log(chalk.greenBright.bold('\n[-] Note titled ' + '\'' + chalk.blue(deletedNote[0].title) + '\'' + ' deleted '))
+      saveNotes(notes)
+    }
+
   }
 }
 
@@ -55,7 +72,7 @@ const readNote = function (title) {
   const notes = loadNotes()
   const note = notes.find((note) => note.title === title)
 
-  if(note) {
+  if (note) {
     console.log(chalk.yellow(note.title))
     console.log(chalk.red(note.body), '\n')
   } else {
