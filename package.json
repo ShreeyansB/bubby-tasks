@@ -1,6 +1,6 @@
 {
   "name": "bubby-tasks",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A command line task maintainer",
   "main": "app.js",
   "scripts": {
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShreeyansB/node-tasks.git"
+    "url": "git+https://github.com/ShreeyansB/bubby-tasks.git"
   },
   "bugs": {
-    "url": "https://github.com/ShreeyansB/node-tasks/issues"
+    "url": "https://github.com/ShreeyansB/bubby-tasks/issues"
   },
-  "homepage": "https://github.com/ShreeyansB/node-tasks#readme",
+  "homepage": "https://github.com/ShreeyansB/bubby-tasks#readme",
   "bin": "cli.js"
 }
